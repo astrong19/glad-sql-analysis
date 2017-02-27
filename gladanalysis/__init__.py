@@ -31,7 +31,7 @@ def create_application():
     swagger = load_config_json('swagger')
     CTRegisterMicroserviceFlask.register(
         app = application,
-        name = 'gladanalysis',
+        name = 'ms',
         info = info,
         swagger = swagger,
         mode = CTRegisterMicroserviceFlask.AUTOREGISTER_MODE if os.getenv('ENVIRONMENT') == 'dev' else CTRegisterMicroserviceFlask.NORMAL_MODE,
