@@ -10,4 +10,4 @@ prod:
   log_driver: "syslog"
   log_opt:
       syslog-address: ${SYSLOG_ADDRESS}
-      tag: ms-python${STAGING}
+      tag: glad-sql-analysis${STAGING}

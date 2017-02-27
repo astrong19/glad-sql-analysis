@@ -5,8 +5,8 @@ settings={
         'level': 'DEBUG'
     },
     'service': {
-        'name': 'MS-PYTHON',
-        'uri': 'http://mymachine:5700',
+        'name': 'glad-sql-analysis',
+        'uri': 'http://172.30.2.76:5700',
         'port': 5700
     }
 }
