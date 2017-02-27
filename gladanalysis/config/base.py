@@ -1,4 +1,4 @@
-from ms.utils.files import BASE_DIR
+from gladanalysis.utils.files import BASE_DIR
 
 settings={
     'logging': {

@@ -3,9 +3,9 @@ import json
 import logging
 
 from flask import Flask
-from ms.config import settings
-from ms.routes.api.v1 import endpoints
-from ms.utils.files import load_config_json
+from gladanalysis.config import settings
+from gladanalysis.routes.api.v1 import endpoints
+from gladanalysis.utils.files import load_config_json
 import CTRegisterMicroserviceFlask
 
 # Logging
