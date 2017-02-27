@@ -6,7 +6,7 @@ settings={
     },
     'service': {
         'name': 'glad-sql-analysis',
-        'uri': 'http://172.30.2.76:5700',
-        'port': 5700
+        'uri': 'http://172.30.2.76:62000',
+        'port': 62000
     }
 }

@@ -1,7 +1,7 @@
 base:
   build: .
   ports:
-    - "5700:5700"
+    - "62000:62000"
   environment:
-    PORT: 5700
+    PORT: 62000
   container_name: glad-sql-analysis
