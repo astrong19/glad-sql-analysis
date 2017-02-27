@@ -3,7 +3,7 @@ develop:
     file: base.yml
     service: base
   ports:
-    - "35733:35730"
+    - "5700:5700"
   container_name: glad-sql-analysis
   environment:
     ENVIRONMENT: dev
