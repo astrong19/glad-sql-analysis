@@ -11,7 +11,7 @@ from . import endpoints
 from gladanalysis.responders import ErrorResponder
 from gladanalysis.utils.http import request_to_microservice
 
-@endpoints.route('/hello', methods=['GET'])
+@endpoints.route('/gladanalysis', methods=['GET'])
 def say_hello():
     """Query GEE Dataset Endpoint"""
     logging.info('Doing GEE Query')
