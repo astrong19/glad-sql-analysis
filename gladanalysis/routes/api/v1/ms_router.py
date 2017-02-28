@@ -23,7 +23,7 @@ def query_glad():
     f = '&format=json'
     prefix = '&geostore='
 
-    request = url + prefix + geostore + sql + f
-    r = requests.get(request)
+    full = url + prefix + geostore + sql + f
+    r = requests.get(full)
 
     return jsonify(r.json()), 200
