@@ -38,6 +38,9 @@ def query_glad():
             }]
         }), 400
 
+    if not conf:
+        pass
+
     if conf <2 or conf >3:
         return jsonify({'errors': [{
             'status': '400',
