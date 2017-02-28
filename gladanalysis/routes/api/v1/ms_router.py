@@ -20,7 +20,7 @@ def query_glad():
 
     datasetID = '274b4818-be18-4890-9d10-eae56d2a82e5'
     url = 'http://staging-api.globalforestwatch.org/query/'
-    sql = "?sql=count(julian_day) from index_b846230fcec0420892d13fc11ea7e32b where ((year = '2015' and julian_day >= 1) or (year = '2016') or (year = '2017' and julian_day <= 58))"
+    sql = "?sql=select count(julian_day) from index_b846230fcec0420892d13fc11ea7e32b where ((year = '2015' and julian_day >= 1) or (year = '2016') or (year = '2017' and julian_day <= 58))"
     prefix = '&geostore='
     f = '&format=json'
 
