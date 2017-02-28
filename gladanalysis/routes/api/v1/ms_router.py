@@ -21,9 +21,8 @@ def query_glad():
     url = 'http://staging-api.globalforestwatch.org/query/'
     sql = "?sql=count(julian_day) from index_b846230fcec0420892d13fc11ea7e32b where ((year = '2015' and julian_day >= 1) or (year = '2016') or (year = '2017' and julian_day <= 58))"
     f = '&format=json'
-    prefix = '&geostore='
 
-    full = url + prefix + geostore + sql + f
+    full = url + geostore + sql + f
     r = requests.get(full)
 
     return jsonify(r.json()), 200
