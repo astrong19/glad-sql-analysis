@@ -26,5 +26,6 @@ def query_glad():
 
     full = url + datasetID + sql + prefix + geostore + f
     r = requests.get(full)
+    data = r.json
 
-    return jsonify(r.json()), 200
+    return jsonify({'data': data}), 200
