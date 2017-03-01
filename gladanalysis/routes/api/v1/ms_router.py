@@ -38,15 +38,15 @@ def query_glad():
             }]
         }), 400
 
-    if not conf:
-        pass
-
-    if conf <2 or conf >3:
-        return jsonify({'errors': [{
-            'status': '400',
-            'title': 'confidence must be 2 or 3'
-            }]
-        }), 400
+    # if not conf:
+    #     pass
+    #
+    # if conf <2 or conf >3:
+    #     return jsonify({'errors': [{
+    #         'status': '400',
+    #         'title': 'confidence must be 2 or 3'
+    #         }]
+    #     }), 400
 
     period_from = period.split(',')[0]
     period_to = period.split(',')[1]
@@ -63,7 +63,7 @@ def query_glad():
 
     url = 'http://staging-api.globalforestwatch.org/query/'
     datasetID = '274b4818-be18-4890-9d10-eae56d2a82e5'
-    sql = "?sql=select count(julian_day) from index_b846230fcec0420892d13fc11ea7e32b where ((year = %s and julian_day >= %s) or (year = %s) or (year = %s and julian_day <= %s) and (confidence = %s))&geostore=" %(from_year, from_date, mid_year, to_year, to_date, conf)
+    sql = "?sql=select count(julian_day) from index_b846230fcec0420892d13fc11ea7e32b where ((year = %s and julian_day >= %s) or (year = %s) or (year = %s and julian_day <= %s))&geostore=" %(from_year, from_date, mid_year, to_year, to_date)
     f = '&format=json'
 
     full = url + datasetID + sql + geostore + f
