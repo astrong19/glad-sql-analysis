@@ -67,7 +67,7 @@ def query_glad():
     elif (from_year == '2016') and (to_year == '2016'):
         sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2016' and julian_day >= %s and julian_day <= %s&geostore=" %(from_date, to_date)
     elif (from_year == '2017') and (to_year == '2017'):
-        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2016' and julian_day >= %s and julian_day <= %s&geostore=" %(from_date, to_date)
+        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2017' and julian_day >= %s and julian_day <= %s&geostore=" %(from_date, to_date)
 
     url = 'http://production-api.globalforestwatch.org/query/'
     datasetID = 'e663eb09-04de-4f39-b871-35c6c2ed10b5'
