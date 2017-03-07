@@ -57,13 +57,20 @@ def query_glad():
     to_date = period_to.split("-")[1]
 
     if (from_year == '2015') and (to_year == '2017'):
-        mid_year = '2016'
-    else:
-        mid_year = from_year
+        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = '2015' and julian_day >= %s) or (year = '2016') or (year = '2017' and julian_day <= %s))&geostore=" %(from_date, to_date)
+    elif (from_year == '2015') and (to_year == '2016'):
+        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = '2015' and julian_day >= %s) or (year = '2016' and julian_day <= %s))&geostore=" %(from_date, to_date)
+    elif (from_year == '2016') and (to_year == '2017'):
+        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = '2016' and julian_day >= %s) or (year = '2017' and julian_day <= %s))&geostore=" %(from_date, to_date)
+    elif (from_year == '2015') and (to_year == '2015'):
+        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2015' and julian_day >= %s and julian_day <= %s&geostore=" %(from_date, to_date)
+    elif (from_year == '2016') and (to_year == '2016'):
+        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2016' and julian_day >= %s and julian_day <= %s&geostore=" %(from_date, to_date)
+    elif (from_year == '2017') and (to_year == '2017'):
+        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2016' and julian_day >= %s and julian_day <= %s&geostore=" %(from_date, to_date)
 
     url = 'http://production-api.globalforestwatch.org/query/'
     datasetID = 'e663eb09-04de-4f39-b871-35c6c2ed10b5'
-    sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = %s and julian_day >= %s) or (year = %s) or (year = %s and julian_day <= %s))&geostore=" %(from_year, from_date, mid_year, to_year, to_date)
     f = '&format=json'
 
     full = url + datasetID + sql + geostore + f
