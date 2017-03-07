@@ -57,23 +57,28 @@ def query_glad():
     to_date = period_to.split("-")[1]
 
     if (from_year == '2015') and (to_year == '2017'):
-        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = '2015' and julian_day >= %s) or (year = '2016') or (year = '2017' and julian_day <= %s))&geostore=" %(from_date, to_date)
+        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = '2015' and julian_day >= %s) or (year = '2016') or (year = '2017' and julian_day <= %s))" %(from_date, to_date)
     elif (from_year == '2015') and (to_year == '2016'):
-        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = '2015' and julian_day >= %s) or (year = '2016' and julian_day <= %s))&geostore=" %(from_date, to_date)
+        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = '2015' and julian_day >= %s) or (year = '2016' and julian_day <= %s))" %(from_date, to_date)
     elif (from_year == '2016') and (to_year == '2017'):
-        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = '2016' and julian_day >= %s) or (year = '2017' and julian_day <= %s))&geostore=" %(from_date, to_date)
+        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = '2016' and julian_day >= %s) or (year = '2017' and julian_day <= %s))" %(from_date, to_date)
     elif (from_year == '2015') and (to_year == '2015'):
-        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2015' and julian_day >= %s and julian_day <= %s&geostore=" %(from_date, to_date)
+        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2015' and julian_day >= %s and julian_day <= %s" %(from_date, to_date)
     elif (from_year == '2016') and (to_year == '2016'):
-        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2016' and julian_day >= %s and julian_day <= %s&geostore=" %(from_date, to_date)
+        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2016' and julian_day >= %s and julian_day <= %s" %(from_date, to_date)
     elif (from_year == '2017') and (to_year == '2017'):
-        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2017' and julian_day >= %s and julian_day <= %s&geostore=" %(from_date, to_date)
+        sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2017' and julian_day >= %s and julian_day <= %s" %(from_date, to_date)
+
+    if conf == '3':
+        confidence = "and confidence = '3'"
+    else:
+        confidence = ""
 
     url = 'http://production-api.globalforestwatch.org/query/'
     datasetID = 'e663eb09-04de-4f39-b871-35c6c2ed10b5'
     f = '&format=json'
 
-    full = url + datasetID + sql + geostore + f
+    full = url + datasetID + sql + confidence + "&geostore=" + geostore + f
     r = requests.get(url=full)
     data = r.json()
     # count = data['data']['data']
