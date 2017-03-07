@@ -61,9 +61,9 @@ def query_glad():
     else:
         mid_year = from_year
 
-    url = 'http://staging-api.globalforestwatch.org/query/'
-    datasetID = '274b4818-be18-4890-9d10-eae56d2a82e5'
-    sql = "?sql=select count(julian_day) from index_b846230fcec0420892d13fc11ea7e32b where ((year = %s and julian_day >= %s) or (year = %s) or (year = %s and julian_day <= %s))&geostore=" %(from_year, from_date, mid_year, to_year, to_date)
+    url = 'http://production-api.globalforestwatch.org/query/'
+    datasetID = 'e663eb09-04de-4f39-b871-35c6c2ed10b5'
+    sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = %s and julian_day >= %s) or (year = %s) or (year = %s and julian_day <= %s))&geostore=" %(from_year, from_date, mid_year, to_year, to_date)
     f = '&format=json'
 
     full = url + datasetID + sql + geostore + f
