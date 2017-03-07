@@ -69,5 +69,6 @@ def query_glad():
     full = url + datasetID + sql + geostore + f
     r = requests.get(url=full)
     data = r.json()
+    count = data['data']['data']
 
-    return jsonify({'data': data}), 200
+    return jsonify({'data': count}), 200
