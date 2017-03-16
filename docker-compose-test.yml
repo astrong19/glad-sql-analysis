@@ -5,4 +5,4 @@ develop:
   container_name: glad-sql-analysis
   environment:
     DEBUG: "True"
-command: test
+  command: test
