@@ -48,16 +48,22 @@ def query_glad():
 
     if (from_year == '2015') and (to_year == '2017'):
         sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = '2015' and julian_day >= %s) or (year = '2016') or (year = '2017' and julian_day <= %s))" %(from_date, to_date)
+        download_sql = "?sql=select lat, long, confidence, year, julian_day from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = '2015' and julian_day >= %s) or (year = '2016') or (year = '2017' and julian_day <= %s))" %(from_date, to_date)
     elif (from_year == '2015') and (to_year == '2016'):
         sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = '2015' and julian_day >= %s) or (year = '2016' and julian_day <= %s))" %(from_date, to_date)
+        download_sql = "?sql=select lat, long, confidence, year, julian_day from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = '2015' and julian_day >= %s) or (year = '2016' and julian_day <= %s))" %(from_date, to_date)
     elif (from_year == '2016') and (to_year == '2017'):
         sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = '2016' and julian_day >= %s) or (year = '2017' and julian_day <= %s))" %(from_date, to_date)
+        download_sql = "?sql=select lat, long, confidence, year, julian_day from index_e663eb0904de4f39b87135c6c2ed10b5 where ((year = '2016' and julian_day >= %s) or (year = '2017' and julian_day <= %s))" %(from_date, to_date)
     elif (from_year == '2015') and (to_year == '2015'):
         sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2015' and julian_day >= %s and julian_day <= %s" %(from_date, to_date)
+        download_sql = "?sql=select lat, long, confidence, year, julian_day from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2015' and julian_day >= %s and julian_day <= %s" %(from_date, to_date)
     elif (from_year == '2016') and (to_year == '2016'):
         sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2016' and julian_day >= %s and julian_day <= %s" %(from_date, to_date)
+        download_sql = "?sql=select lat, long, confidence, year, julian_day from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2016' and julian_day >= %s and julian_day <= %s" %(from_date, to_date)
     elif (from_year == '2017') and (to_year == '2017'):
         sql = "?sql=select count(julian_day) from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2017' and julian_day >= %s and julian_day <= %s" %(from_date, to_date)
+        download_sql = "?sql=select lat, long, confidence, year, julian_day from index_e663eb0904de4f39b87135c6c2ed10b5 where year = '2017' and julian_day >= %s and julian_day <= %s" %(from_date, to_date)
 
     if conf == '3':
         confidence = "and confidence = '3'"
@@ -71,7 +77,15 @@ def query_glad():
     full = url + datasetID + sql + confidence + "&geostore=" + geostore + f
     r = requests.get(url=full)
     data = r.json()
-    # count = data['data']['data']
-    #test comment2
 
-    return jsonify({'data': data}), 200
+    standard_format = {}
+    standard_format["data"] = {}
+    standard_format["data"]["type"] = "glad-alerts"
+    standard_format["data"]["id"] = "undefined"
+    standard_format["data"]["attributes"]["value"] = data["data"]["data"][0]["COUNT(julian_day)"]
+    standard_format["data"]["attributes"]["downloadUrls"] = {}
+    standard_format["data"]["attributes"]["downloadUrls"]["csv"] = "/download/274b4818-be18-4890-9d10-eae56d2a82e5" + download_sql + "&format=csv"
+    standard_format["data"]["attributes"]["downloadUrls"]["json"] = "/download/274b4818-be18-4890-9d10-eae56d2a82e5" + download_sql + "&format=json"
+    standard_format["data"]["area"] = "not sure how to generate yet"
+
+    return jsonify({'data': standard_format}), 200
