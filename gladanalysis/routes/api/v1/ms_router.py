@@ -38,16 +38,6 @@ def query_glad():
             }]
         }), 400
 
-    # if not conf:
-    #     pass
-    #
-    # if conf <2 or conf >3:
-    #     return jsonify({'errors': [{
-    #         'status': '400',
-    #         'title': 'confidence must be 2 or 3'
-    #         }]
-    #     }), 400
-
     period_from = period.split(',')[0]
     period_to = period.split(',')[1]
 
@@ -74,8 +64,8 @@ def query_glad():
     else:
         confidence = ""
 
-    url = 'http://production-api.globalforestwatch.org/query/'
-    datasetID = 'e663eb09-04de-4f39-b871-35c6c2ed10b5'
+    url = 'http://staging-api.globalforestwatch.org/query/'
+    datasetID = '274b4818-be18-4890-9d10-eae56d2a82e5'
     f = '&format=json'
 
     full = url + datasetID + sql + confidence + "&geostore=" + geostore + f
