@@ -72,6 +72,6 @@ def query_glad():
     r = requests.get(url=full)
     data = r.json()
     # count = data['data']['data']
-    #test comment
+    #test comment2
 
     return jsonify({'data': data}), 200
