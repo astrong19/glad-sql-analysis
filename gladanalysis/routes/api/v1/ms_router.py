@@ -89,8 +89,8 @@ def query_glad():
     standard_format["attributes"] = {}
     standard_format["attributes"]["value"] = data["data"][0]["COUNT(julian_day)"]
     standard_format["attributes"]["downloadUrls"] = {}
-    standard_format["attributes"]["downloadUrls"]["csv"] = "/download/274b4818-be18-4890-9d10-eae56d2a82e5" + download_sql + "&format=csv"
-    standard_format["attributes"]["downloadUrls"]["json"] = "/download/274b4818-be18-4890-9d10-eae56d2a82e5" + download_sql + "&format=json"
-    standard_format["area"] = area
+    standard_format["attributes"]["downloadUrls"]["csv"] = "/download/274b4818-be18-4890-9d10-eae56d2a82e5" + download_sql + "&geostore=" + geostore + "&format=csv"
+    standard_format["attributes"]["downloadUrls"]["json"] = "/download/274b4818-be18-4890-9d10-eae56d2a82e5" + download_sql + "&geostore=" + geostore + "&format=json"
+    standard_format['attributes']["area"] = area
 
     return jsonify({'data': standard_format}), 200
