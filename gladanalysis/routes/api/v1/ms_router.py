@@ -83,7 +83,7 @@ def query_glad():
     standard_format["data"]["type"] = "glad-alerts"
     standard_format["data"]["id"] = "undefined"
     standard_format["data"]["attributes"] = {}
-    standard_format["data"]["attributes"]["value"] = data["data"]["data"][0]["COUNT(julian_day)"]
+    standard_format["data"]["attributes"]["value"] = data["data"][0]["COUNT(julian_day)"]
     standard_format["data"]["attributes"]["downloadUrls"] = {}
     standard_format["data"]["attributes"]["downloadUrls"]["csv"] = "/download/274b4818-be18-4890-9d10-eae56d2a82e5" + download_sql + "&format=csv"
     standard_format["data"]["attributes"]["downloadUrls"]["json"] = "/download/274b4818-be18-4890-9d10-eae56d2a82e5" + download_sql + "&format=json"
